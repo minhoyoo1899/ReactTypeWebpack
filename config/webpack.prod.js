@@ -24,7 +24,22 @@ module.exports = merge(common, {
           "css-loader",
           "sass-loader",
         ],
+      },      
+      {
+        test: /\.(png|jpg|gif|svg)$/, // 확장자가 png, jpg, gif, svg인것에 대해서만 등록
+        loader: 'file-loader',
       },
+      {
+        test: /\.(png|jpg|gif|svg|jpeg)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
+      }
     ],
   },
   plugins: [new MiniCssExtractPlugin()],
