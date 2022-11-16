@@ -2,7 +2,9 @@ const test = () => {
   return <div>
     <input></input>
     <main>
-      <section></section>
+      <section>
+        테스트해보기
+      </section>
     </main>
   </div>
 }
