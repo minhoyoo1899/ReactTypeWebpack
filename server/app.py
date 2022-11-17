@@ -29,7 +29,7 @@ def db_connection():
     # 커서 가져오기
     # cursor  데이터베이스와 상호 작용하는 데 사용하는 개체
     # dict으로 결과를 반환하겠다
-    sql = 'SELECT * FROM companylist LIMIT 1'
+    sql = 'SELECT * FROM companylist LIMIT 100;'
     # SQL query 실행
     cursor.execute(sql)
     # SQL query 실행 결과를 가져온다.
@@ -64,6 +64,29 @@ def db_connection02():
     # 결과는 fetchall()을 이용해서 받아온다.
     return result
 
+def db_connection03():
+    db = pymysql.connect(
+        host="localhost",
+        port=3306,
+        user="root",
+        passwd="TheoHernandez19!",
+        db="aitrading_db",
+        charset="utf8",
+    )
+    cursor = db.cursor(pymysql.cursors.DictCursor)
+    # 커서 가져오기
+    # cursor  데이터베이스와 상호 작용하는 데 사용하는 개체
+    # dict으로 결과를 반환하겠다
+    sql = 'SELECT name FROM kosdak_000250_d LIMIT 10'
+    # SQL query 실행
+    cursor.execute(sql)
+    # SQL query 실행 결과를 가져온다.
+    result = cursor.fetchall()
+    db.close()
+    # excute()와 fetch()를 이용해 데이터 핸들링이 가능하다.
+    # excute() 를 이용해 SQL을 실행하고,
+    # 결과는 fetchall()을 이용해서 받아온다.
+    return result
 
 @app.route('/company')
 def company():
@@ -74,6 +97,11 @@ def company():
 def compdata():
   data = db_connection02()
   return json.dumps(data, indent="\t", ensure_ascii=False, default=str)
+
+# @app.route('/compdata02')
+# def compdata():
+#   data = db_connection03()
+#   return json.dumps(data, indent="\t", ensure_ascii=False, default=str)
 
 
 

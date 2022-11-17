@@ -1,7 +1,9 @@
 import MinhoPage from "./minhoPage"
 import Test from "./Test"
 import DBserver from "./DBserver"
-import DBserver02 from "./DBserver02"
+import { GoogleChart } from "./GoogleChart"
+import { GoogleChart02 } from "./GoogleChart02"
+import DBserver03 from "./DBserver03"
 
 const App = () => {
   return <div>
@@ -11,7 +13,16 @@ const App = () => {
     <Test />
     <div>
       <DBserver />
-      <DBserver02 />
+      {/* <DBserver02 /> */}
+    </div>
+    <div>
+      <GoogleChart />
+    </div>
+    <div>
+      <GoogleChart02 />
+    </div>
+    <div>
+    <DBserver03 />
     </div>
   </div>;
 }
