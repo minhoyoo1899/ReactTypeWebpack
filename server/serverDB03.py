@@ -35,7 +35,8 @@ def db_connection(name):
     # 커서 가져오기
     # cursor  데이터베이스와 상호 작용하는 데 사용하는 개체
     # dict으로 결과를 반환하겠다
-    sql = f'SELECT * FROM companylist WHERE NAME LIKE "{name}%";'
+    sql = f'SELECT * FROM companylist WHERE NAME LIKE "{name}%"'
+    
     #print(name)
     #sqql = "SELECT * FROM companylist LIMIT 1"
     # SQL query 실행
@@ -52,13 +53,13 @@ def db_connection(name):
 @app.route('/companylist')
 def company():
     values = request.values['name']
-    #print(values)
+    print(values)
     data = db_connection(values)
-    print(data)    
+    # print(data)
     #message = values["message"]    
     # print(message)
     return json.dumps(data, indent="\t", ensure_ascii=False, default=str)
-
+    
 
 if __name__ == '__main__':
     # 현재 작성된 파이썬 파일이 메인으로 실행되는 파일이면, app.run을 수행해라.
