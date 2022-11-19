@@ -50,7 +50,8 @@ function App() {
             return(
               <p>{i.name}</p>
             )
-          })}</td>
+          })}
+          </td>
           <td>
           {Data.map((i:company)=>{
             return(
