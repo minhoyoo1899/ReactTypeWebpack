@@ -45,28 +45,25 @@ function DBgoogle() {
   // });
 
  const chartData: any = [
-    ["날짜", "시가", "저가", "고가", "종가"],
+    ["DATE", "시가", "고가", "저가", "종가"],    
   ];
   //arr.map(callback(currentValue[, index[, array]])[, thisArg])
   Data.map((i: company, index) => {
-    const pushArr: any = [i.day, i.open, i.low, i.high, i.close];
-    // chartData.push(pushArr);
-    // console.log(index);
+    const pushArr: any = [i.day, i.open, i.high, i.low, i.close];
     // console.log(typeof index);
     if (index % 7 === 0) {     
       console.log(`index === ${index}`);
       chartData.push(pushArr);
     }
+    
   });  
   
   const options = {
     legend: "none",
-    bar: {
-      groupWidth: "50%",
-    }, // Remove space between bars.
+    bar: { groupWidth: "100%" }, // Remove space between bars.
     candlestick: {
-      risingColor: { strokeWidth: 15.5, fill: "blue" }, // green
-      fallingColor: { strokeWidth: 15.5, fill: "#a52714" }, // red
+      fallingColor: { strokeWidth: 0, fill: "#a52714" }, // red
+      risingColor: { strokeWidth: 0, fill: "blue" }, // green
     },
   };
   
@@ -74,7 +71,7 @@ function DBgoogle() {
     <div>
       <Chart
       chartType="CandlestickChart"
-      width="70vw"
+      width="100vw"
       height="100vh"
       data={chartData}
       options={options}

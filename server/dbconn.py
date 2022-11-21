@@ -19,12 +19,13 @@ def dbconnect():
 def data_by_code(code):
     conn = dbconnect()
     cur = conn.cursor()
+    # sql = f'SELECT open,high,low,close,DATE_FORMAT(day, "%Y-%m-%d") as day FROM {code}'
     sql = f'SELECT TABLE_NAME FROM information_schema.tables WHERE TABLE_NAME LIKE "%{code}_d"'
     cur.execute(sql)
     company = cur.fetchone()
-    sql = f'SELECT * FROM {company["TABLE_NAME"]} ORDER BY day DESC'
+    sql = f'SELECT open,high,low,close,DATE_FORMAT(day, "%Y-%m-%d") as day FROM {company["TABLE_NAME"]} ORDER BY day DESC'
     cur.execute(sql)
-    results = cur.fetchmany(10)
+    results = cur.fetchmany(140)
     conn.close()
     return results
 
