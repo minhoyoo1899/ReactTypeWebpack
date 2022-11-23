@@ -5,9 +5,9 @@ import pymysql.cursors
 def dbconnect():
     conn = pymysql.connect(
       host='127.0.0.1',
-      port=3306,
+      port=3000,
       user='root', 
-      password='TheoHernandez19!',
+      password='pass',
       db='aitrading_db',
       charset='utf8',
       init_command='SET NAMES UTF8',

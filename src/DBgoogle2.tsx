@@ -14,7 +14,7 @@ interface company {
 
 
 
-function DBgoogle() {
+function DBgoogle02() {
   const [Data, setData] = useState([]);
   const fetchDatas = async () => {
     try {
@@ -62,11 +62,14 @@ function DBgoogle() {
   const options = {
     legend: "none",
     bar: {
-      groupWidth: "50%",
+      groupWidth: "90%",
     }, // Remove space between bars.
     candlestick: {
-      risingColor: { strokeWidth: 15.5, fill: "blue" }, // green
-      fallingColor: { strokeWidth: 15.5, fill: "#a52714" }, // red
+      risingColor: { strokeWidth: 30, fill: "blue" }, // green
+      fallingColor: { strokeWidth: 20, fill: "#a52714" }, // red
+      hAxis: { format: 'long' },
+      vAxis: { logScale: 'true' },
+
     },
   };
   
@@ -75,7 +78,7 @@ function DBgoogle() {
       <Chart
       chartType="CandlestickChart"
       width="70vw"
-      height="100vh"
+      height="150vw"
       data={chartData}
       options={options}
     />
@@ -84,4 +87,5 @@ function DBgoogle() {
 }
 
 
-export default DBgoogle;
+export default DBgoogle02;
+
